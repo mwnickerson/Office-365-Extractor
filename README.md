@@ -1,6 +1,11 @@
 <h3>Office 365 Extractor</h3>
 This script makes it possible to extract log data out of an Office365 environment. The script created by us consist out of four main options, which enable the investigator to easily extract logging out of an Office365 environment. 
 
+<h3>Modifications<h3>
+I was experiencing issues getting the script to function properly due to MFA on accounts used for the activities. 
+It is possible to have a device password created to have the script function properly as is, however sometimes it can be a PITA to walk an admin through the process of creating the device password.
+I simply just removed the Get-Credential and now it goes through the standard Microsft365 auth process with prompts for mfa and such.
+
 1.	Show available log sources and amount of logging
 2.	Extract all audit logging
 3.	Extract group audit logging
