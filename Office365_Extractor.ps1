@@ -45,6 +45,7 @@ $menupart1=@"
                                                                                                                                     
 Script created by Joey Rentenaar & Korstiaan Stam @ PwC Incident Response Netherlands
 Visit our Github https://github.com/PwC-IR/Office-365-Extractor for the full readme
+Modified by Matthew Nickerson @ Layer 8 Security to allow for use with MFA protected accounts
 "@
 
 Clear-Host
@@ -123,8 +124,9 @@ function Main{
 		$StartDate = Get-StartDate
 		$EndDate = Get-EndDate
 		
-		$UserCredential = Get-Credential
-		Connect-ExchangeOnline -Credential $UserCredential
+		#$UserCredential = Get-Credential
+		# Commented out to allow for MFA accounts
+		Connect-ExchangeOnline #-Credential $UserCredential
 		
 		$RecordTypes = "ExchangeAdmin","ExchangeItem","ExchangeItemGroup","SharePoint","SyntheticProbe","SharePointFileOperation","OneDrive","AzureActiveDirectory","AzureActiveDirectoryAccountLogon","DataCenterSecurityCmdlet","ComplianceDLPSharePoint","Sway","ComplianceDLPExchange","SharePointSharingOperation","AzureActiveDirectoryStsLogon","SkypeForBusinessPSTNUsage","SkypeForBusinessUsersBlocked","SecurityComplianceCenterEOPCmdlet","ExchangeAggregatedOperation","PowerBIAudit","CRM","Yammer","SkypeForBusinessCmdlets","Discovery","MicrosoftTeams","ThreatIntelligence","MailSubmission","MicrosoftFlow","AeD","MicrosoftStream","ComplianceDLPSharePointClassification","ThreatFinder","Project","SharePointListOperation","SharePointCommentOperation","DataGovernance","Kaizala","SecurityComplianceAlerts","ThreatIntelligenceUrl","SecurityComplianceInsights","MIPLabel","WorkplaceAnalytics","PowerAppsApp","PowerAppsPlan","ThreatIntelligenceAtpContent","LabelContentExplorer","TeamsHealthcare","ExchangeItemAggregated","HygieneEvent","DataInsightsRestApiAudit","InformationBarrierPolicyApplication","SharePointListItemOperation","SharePointContentTypeOperation","SharePointFieldOperation","MicrosoftTeamsAdmin","HRSignal
 ","MicrosoftTeamsDevice","MicrosoftTeamsAnalytics","InformationWorkerProtection","Campaign","DLPEndpoint","AirInvestigation","Quarantine","MicrosoftForms","ApplicationAudit","ComplianceSupervisionExchange","CustomerKeyServiceEncryption","OfficeNative","MipAutoLabelSharePointItem","MipAutoLabelSharePointPolicyLocation","MicrosoftTeamsShifts","MipAutoLabelExchangeItem","CortanaBriefing","Search","WDATPAlerts","MDATPAudit"
@@ -197,8 +199,9 @@ function Main{
 		[DateTime]$CurrentStart = $StartDate
 		[DateTime]$CurrentEnd = $EndDate
 		
-		$UserCredential = Get-Credential
-		Connect-ExchangeOnline -Credential $UserCredential
+		#$UserCredential = Get-Credential
+		# commented out to allow for MFA accounts
+		Connect-ExchangeOnline #-Credential $UserCredential
 		
 		echo ""
 		Write-Host "------------------------------------------------------------------------------------------"
@@ -361,8 +364,9 @@ function Main{
 		Write-LogFile "End date provided by user: $EndDate"
 		Write-Logfile "Time interval provided by user: $IntervalMinutes"
 		
-		$UserCredential = Get-Credential
-		Connect-ExchangeOnline -Credential $UserCredential
+		#$UserCredential = Get-Credential 
+		# commented out to allow for MFA protected accounts
+		Connect-ExchangeOnline # -Credential $UserCredential
 		
 		echo ""
 		Write-Host "----------------------------------------------------------------------------"
@@ -526,8 +530,9 @@ function Main{
 		Write-LogFile "Start date provided by user: $StartDate"
 		Write-LogFile "End date provided by user: $EndDate"
 		Write-Logfile "Time Interval provided by user: $IntervalMinutes"
-		$UserCredential = Get-Credential
-		Connect-ExchangeOnline -Credential $UserCredential
+		#$UserCredential = Get-Credential
+		# Commented out to allow for mfa protected accounts
+		Connect-ExchangeOnline #-Credential $UserCredential
 		echo ""
 		Write-Host "----------------------------------------------------------------------------"
 		Write-Host "|Extracting audit logs between "$StartDate" and "$EndDate"|"
